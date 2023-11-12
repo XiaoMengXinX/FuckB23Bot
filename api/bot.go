@@ -110,10 +110,7 @@ func GetRedirect(url string) (redirect string, err error) {
 			return http.ErrUseLastResponse
 		},
 	}
-	resp, err := client.Get(url)
-	if err != nil {
-		return
-	}
+	resp, _ := client.Get(url)
 	defer resp.Body.Close()
 
 	redirect = resp.Header.Get("Location")
