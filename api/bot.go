@@ -59,7 +59,11 @@ func FuckB23(w http.ResponseWriter, r *http.Request) {
 			}
 			redirectURLs = append(redirectURLs, u)
 		}
-		replacedText := ReplaceB23URL(messageText, originalURLs, redirectURLs)
+
+		var replacedText string
+		if err == nil {
+			replacedText = ReplaceB23URL(messageText, originalURLs, redirectURLs)
+		}
 		timeNow := time.Now().UnixNano()
 
 		inlineMsgContent := replacedText
